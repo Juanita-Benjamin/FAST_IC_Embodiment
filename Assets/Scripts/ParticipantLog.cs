@@ -12,7 +12,7 @@ using UnityEngine.UI;
 public class ParticipantLog : MonoBehaviour
 {
     public TMP_InputField PID;
-    public TMP_Dropdown cohort_dropdown, gender_dropdown, trial_dropdown;
+    public TMP_Dropdown cohort_dropdown, gender_dropdown;
     
     
     //don't use readonly key word
@@ -38,21 +38,21 @@ public class ParticipantLog : MonoBehaviour
         string dateTime = DateTime.Now.ToString("MM-dd-yy-HH-mm");
         string ParticipantID = PID.GetComponent<TMP_InputField>().text;
         string gender = gender_dropdown.options[gender_dropdown.value].text;
-        string trial = trial_dropdown.options[trial_dropdown.value].text;
+        string cohort = cohort_dropdown.options[cohort_dropdown.value].text;
 
         if (!File.Exists(log_path))
         {
             using StreamWriter writer = File.CreateText(log_path);
             writer.WriteLine("ParticipantID, Gender, date-time");
 
-            writer.WriteLine($"{ParticipantID}, {gender}, {trial}, {dateTime}");
+            writer.WriteLine($"{ParticipantID}, {gender}, {cohort}, {dateTime}");
             writer.Close();
         }
 
         else 
         { 
             using StreamWriter writer = File.AppendText(log_path);
-            writer.WriteLine($"{ParticipantID}, {gender}, {trial}, {dateTime}");
+            writer.WriteLine($"{ParticipantID}, {gender}, {cohort}, {dateTime}");
             writer.Close();
         }
 
