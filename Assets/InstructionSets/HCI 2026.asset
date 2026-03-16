@@ -53,13 +53,23 @@ MonoBehaviour:
     fromAttachPointIndex: 0
     fromAttach_rotation: {x: 1, y: -0.00000004470349, z: -0.0000000745058, w: 0.00000001490115}
     fromID: 27
-  - name: 'Attach C_ELBOW_12[1] to PIPE_9[1]'
+  - name: 'Attach C_ELBOW_12[0] to PIPE_9[1]'
     toAttach: 3
-    toAttachPointIndex: 1
-    toAttach_rotation: {x: -1, y: 0.00000004470349, z: 0.0000000745058, w: 0.00000001490115}
+    toAttachPointIndex: 0
+    toAttach_rotation: {x: -0.7071068, y: 0.7071068, z: 0.000000001807822, w: 0.00000004033904}
     toAttach_color: 0
     toID: 12
     fromAttach: 3
     fromAttachPointIndex: 1
-    fromAttach_rotation: {x: 1, y: -0.00000004470349, z: -0.0000000745058, w: 0.00000001490115}
+    fromAttach_rotation: {x: 0.7071068, y: -0.7071068, z: -0.000000001807822, w: 0.00000004033904}
     fromID: 9
+  - name: 'Attach  PIPE_7[0] to C_ELBOW 12_[1]'
+    toAttach: 0
+    toAttachPointIndex: 0
+    toAttach_rotation: {x: -0.00000001490115, y: 1, z: 0.00000004470348, w: -0.00000004033904}
+    toAttach_color: 1
+    toID: 7
+    fromAttach: 3
+    fromAttachPointIndex: 1
+    fromAttach_rotation: {x: -0.00000001490115, y: 1, z: 0.00000004470348, w: -0.00000004033904}
+    fromID: 12
