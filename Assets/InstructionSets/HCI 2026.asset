@@ -13,13 +13,53 @@ MonoBehaviour:
   m_Name: HCI 2026
   m_EditorClassIdentifier: 
   _mInstructions:
-  - name: 'Attach PIPE_6[0] to C_Elbow_1[1]'
+  - name: 'Attach PIPE_4[0] to C_Elbow_1[0]'
     toAttach: 0
     toAttachPointIndex: 0
-    toAttach_rotation: {x: 0, y: 0, z: 0, w: 0}
+    toAttach_rotation: {x: 0.7071068, y: -0.7071068, z: -0.00000005347969, w: 0.00000004325316}
+    toAttach_color: 3
+    toID: 4
+    fromAttach: 3
+    fromAttachPointIndex: 0
+    fromAttach_rotation: {x: 0.7071068, y: -0.7071068, z: -0.00000005347969, w: 0.00000004325316}
+    fromID: 1
+  - name: 'Attach C_ELBOW_1[1] to PIPE_6[0]'
+    toAttach: 3
+    toAttachPointIndex: 1
+    toAttach_rotation: {x: 0.7071068, y: -0.7071068, z: -0.00000003652774, w: -0.00000003652773}
     toAttach_color: 0
-    toID: 0
+    toID: 1
     fromAttach: 0
     fromAttachPointIndex: 0
-    fromAttach_rotation: {x: 0, y: 0, z: 0, w: 0}
-    fromID: 0
+    fromAttach_rotation: {x: 0.7071068, y: -0.7071068, z: -0.00000003652774, w: -0.00000003652773}
+    fromID: 6
+  - name: 'Attach C_ELBOW_27[1] to PIPE_4[1]'
+    toAttach: 3
+    toAttachPointIndex: 1
+    toAttach_rotation: {x: 0.7071068, y: -0.7071068, z: -0.00000003652774, w: -0.00000003652773}
+    toAttach_color: 0
+    toID: 27
+    fromAttach: 0
+    fromAttachPointIndex: 1
+    fromAttach_rotation: {x: 0.7071068, y: -0.7071068, z: -0.00000005347969, w: 0.00000004325316}
+    fromID: 4
+  - name: 'Attach PIPE_9[0] to C_ELBOW_27[0]'
+    toAttach: 0
+    toAttachPointIndex: 0
+    toAttach_rotation: {x: -1, y: 0.00000004470349, z: 0.0000000745058, w: 0.00000001490115}
+    toAttach_color: 4
+    toID: 9
+    fromAttach: 3
+    fromAttachPointIndex: 0
+    fromAttach_rotation: {x: 1, y: -0.00000004470349, z: -0.0000000745058, w: 0.00000001490115}
+    fromID: 27
+  - name: 'Attach C_ELBOW_12[1] to PIPE_9[1]'
+    toAttach: 3
+    toAttachPointIndex: 1
+    toAttach_rotation: {x: -1, y: 0.00000004470349, z: 0.0000000745058, w: 0.00000001490115}
+    toAttach_color: 0
+    toID: 12
+    fromAttach: 3
+    fromAttachPointIndex: 1
+    fromAttach_rotation: {x: 1, y: -0.00000004470349, z: -0.0000000745058, w: 0.00000001490115}
+    fromID: 9
