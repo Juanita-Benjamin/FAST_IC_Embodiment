@@ -14,6 +14,7 @@ public class SubstructurePositioningHint : MonoBehaviour
 
     [SerializeField] private bool _doSuspendHint;
 
+
     public bool doSuspendHint
     {
         get => _doSuspendHint;
@@ -26,7 +27,7 @@ public class SubstructurePositioningHint : MonoBehaviour
     public Transform substructure;
 
     public Transform hintTransform;
-        
+
     [Tooltip("the acceptable angle offset on the Y axis before displaying the hint to return to the target pose.")]
     public float yAngleOffset = 20f;
 
@@ -71,14 +72,14 @@ public class SubstructurePositioningHint : MonoBehaviour
     void Update()
     {
         if (substructure == null) return;
-        var fromTo =substructure.rotation * Quaternion.Inverse(targetTransform.rotation);
-        var yPlaneRotatedForward = Vector3.ProjectOnPlane(fromTo * Vector3.forward,Vector3.up);
+        var fromTo = substructure.rotation * Quaternion.Inverse(targetTransform.rotation);
+        var yPlaneRotatedForward = Vector3.ProjectOnPlane(fromTo * Vector3.forward, Vector3.up);
         // show the hint if the y-plane angle offset is above the threshold.
         beShowingTheHint = Vector3.Angle(Vector3.forward, yPlaneRotatedForward) > yAngleOffset
-           // kinda gross, but since we already computed the y-plane flattened, rotated forward vector, we can invert
-           // the rotation back to get just the inverse of the remaining offset that we had squashed.
+            // kinda gross, but since we already computed the y-plane flattened, rotated forward vector, we can invert
+            // the rotation back to get just the inverse of the remaining offset that we had squashed.
             || Vector3.Angle(Quaternion.Inverse(fromTo) * yPlaneRotatedForward, Vector3.forward) > otherAngleOffset
-           // show the hint if the position offset is above the threshold.
+            // show the hint if the position offset is above the threshold.
             || Vector3.Distance(targetTransform.position, substructure.position) > positionalOffset;
         if (wasShowing != beShowingTheHint) alignEvent?.Invoke(isAligned);
         wasShowing = beShowingTheHint;
@@ -122,7 +123,7 @@ public class SubstructurePositioningHint : MonoBehaviour
         var cfMesh = copyFrom.GetComponent<MeshFilter>();
         if (cfMesh != null)
         {
-            var cTGO= copyTo.gameObject;
+            var cTGO = copyTo.gameObject;
             var m = cTGO.AddComponent<MeshFilter>();
             m.mesh = cfMesh.mesh;
             var r = cTGO.AddComponent<MeshRenderer>();
@@ -141,45 +142,92 @@ public class SubstructurePositioningHint : MonoBehaviour
         }
     }
 
+    //IEnumerator Animate()
+    //{
+    //    while (beAnimating)
+    //    {
+    //        var time = Time.time;
+    //        // allow the hint animation to complete even if beShowingTheHint is false, since I anticipate
+    //        // we'll want a relatively large-ish range on the thresholds, and don't want to annoyingly trigger
+    //        // the animations turning off on a hard wall.
+    //        if (!keepSecretUntilFirstInPlace
+    //            && (substructure != null && (beShowingTheHint || (lingerHintToComplete && time <= startTime + lerpDuration + holdDuration)))
+    //            && !doSuspendHint)
+    //        {
+    //            hintTransform.gameObject.SetActive(true);
+    //            if (time > startTime + lerpDuration + holdDuration)
+    //            {
+    //                startTime = time;
+    //            }
+
+    //            var animMoving = time <= startTime + lerpDuration;
+    //            var lerp = (time - startTime) / lerpDuration;
+    //            var animHolding = time > startTime + lerpDuration && time <= startTime + lerpDuration + holdDuration;
+
+    //            if (animMoving)
+    //            {
+    //                hintTransform.position = Vector3.Lerp(
+    //                    substructure.position, targetTransform.position, lerp);
+    //                hintTransform.rotation = Quaternion.Lerp(
+    //                    substructure.rotation, targetTransform.rotation, lerp);
+    //            }
+
+    //            if (animHolding)
+    //            {
+    //                hintTransform.position = targetTransform.position;
+    //                hintTransform.rotation = targetTransform.rotation;
+    //            }
+
+    //        }
+    //        else hintTransform.gameObject.SetActive(false);
+    //        yield return new WaitForEndOfFrame();
+    //    }
+    //}
+    //IEnumerator Animate()
+    //{
+    //    while (beAnimating)
+    //    {
+    //        if (!keepSecretUntilFirstInPlace
+    //            && substructure != null
+    //            && beShowingTheHint
+    //            && !doSuspendHint)
+    //        {
+    //            hintTransform.gameObject.SetActive(true);
+    //            hintTransform.SetPositionAndRotation(
+    //                targetTransform.position,
+    //                targetTransform.rotation
+    //            );
+    //        }
+    //        else
+    //        {
+    //            hintTransform.gameObject.SetActive(false);
+    //        }
+
+    //        yield return new WaitForEndOfFrame();
+    //    }
+    //}
     IEnumerator Animate()
     {
         while (beAnimating)
         {
-            var time = Time.time;
-            // allow the hint animation to complete even if beShowingTheHint is false, since I anticipate
-            // we'll want a relatively large-ish range on the thresholds, and don't want to annoyingly trigger
-            // the animations turning off on a hard wall.
             if (!keepSecretUntilFirstInPlace
-                && (substructure!=null && (beShowingTheHint || (lingerHintToComplete && time <= startTime + lerpDuration + holdDuration)))
+                && substructure != null
+                && beShowingTheHint
                 && !doSuspendHint)
             {
                 hintTransform.gameObject.SetActive(true);
-                if (time > startTime + lerpDuration + holdDuration)
-                {
-                    startTime = time;
-                }
 
-                var animMoving = time <= startTime + lerpDuration;
-                var lerp = (time - startTime) / lerpDuration;
-                var animHolding = time > startTime + lerpDuration && time <= startTime + lerpDuration + holdDuration;
-
-                if (animMoving)
-                {
-                    hintTransform.position = Vector3.Lerp(
-                        substructure.position, targetTransform.position, lerp);
-                    hintTransform.rotation = Quaternion.Lerp(
-                        substructure.rotation, targetTransform.rotation, lerp);
-                }
-
-                if (animHolding)
-                {
-                    hintTransform.position = targetTransform.position;
-                    hintTransform.rotation = targetTransform.rotation;
-                }
-
+                // No animation, no lerp, just appear at the target pose
+                hintTransform.position = targetTransform.position;
+                hintTransform.rotation = targetTransform.rotation;
             }
-            else hintTransform.gameObject.SetActive(false);
-            yield return new WaitForEndOfFrame();
+            else
+            {
+                hintTransform.gameObject.SetActive(false);
+            }
+
+            yield return null;
         }
     }
 }
+

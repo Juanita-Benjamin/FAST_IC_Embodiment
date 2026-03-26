@@ -11,11 +11,11 @@ public class PlayInstructions : Singleton<PlayInstructions>
 {
     [SerializeField] private bool beginOnStart = true;
     [SerializeField] private bool overrideNoSymmetryCalculations = false;
-    [SerializeField]
-    private InteractionCue _interactionCue;
+    [SerializeField] private InteractionCue _interactionCue;
     public InteractionCue interactionCue => _interactionCue;
 
     [SerializeField] private SubstructurePositioningHint substructurePositioningHint;
+
     public SubstructurePositioningHint getPosHint => substructurePositioningHint;
 
     [SerializeField] private bool allowPipesToAny90InsertOffset = true;

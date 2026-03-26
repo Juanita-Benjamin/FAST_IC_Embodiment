@@ -399,7 +399,7 @@ public class InteractionCue : MonoBehaviour
         }
         else
         {
-            EnableHintByTypeAndColor(PieceType.C_TEE,PieceColor.BLACK);
+            EnableHintByTypeAndColor(PieceType.C_ELBOW,PieceColor.BLACK);
             interactionCueHighlighter.GetComponent<MeshFilter>().mesh =
                 _thingToMove.GetComponentInChildren<MeshFilter>().mesh;
             interactionCueHighlighter.transform.parent = _thingToMove.transform;

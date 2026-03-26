@@ -11,32 +11,19 @@ using UnityEngine.UI;
 
 public class ParticipantLog : MonoBehaviour
 {
-    public TMP_InputField PID;
-    public TMP_Dropdown cohort_dropdown, gender_dropdown;
+    
+    public TMP_Dropdown cohort_dropdown, gender_dropdown, PID_dropdown;
     
     
     //don't use readonly key word
     string log_path = "Participant_Logs.csv";
 
-    // Start is called before the first frame update
-    void Start()
-    {
-       
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-      
-   
-    }
 
     //this is to log in the spreadsheet what each person did
     public void ParticipantData()
     {
         string dateTime = DateTime.Now.ToString("MM-dd-yy-HH-mm");
-        string ParticipantID = PID.GetComponent<TMP_InputField>().text;
+        string ParticipantID = PID_dropdown.options[gender_dropdown.value].text;
         string gender = gender_dropdown.options[gender_dropdown.value].text;
         string cohort = cohort_dropdown.options[cohort_dropdown.value].text;
 
