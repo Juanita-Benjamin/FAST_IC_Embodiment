@@ -13,123 +13,93 @@ MonoBehaviour:
   m_Name: HCI InstructionSet
   m_EditorClassIdentifier: 
   _mInstructions:
-  - name: 'Attach PIPE_0[1] to C_ELBOW_1[0]'
+  - name: 'Attach PIPE_1[1] to C_3WAY_0[0]'
     toAttach: 0
     toAttachPointIndex: 1
-    toAttach_rotation: {x: -0.7071068, y: 0.7071068, z: 0.00000007084287, w: 0.00000006943984}
-    toAttach_color: 4
-    toID: 0
-    fromAttach: 3
+    toAttach_rotation: {x: -3.5527137e-15, y: 1.0000001, z: 0.00000005960465, w: 0}
+    toAttach_color: 1
+    toID: 1
+    fromAttach: 5
     fromAttachPointIndex: 0
-    fromAttach_rotation: {x: -0.7071068, y: 0.7071068, z: 0.00000007084287, w: 0.00000006943984}
-    fromID: 1
-  - name: 'Attach C_ELBOW_2[0] to PIPE_0[0]'
-    toAttach: 3
-    toAttachPointIndex: 0
-    toAttach_rotation: {x: -0.7071068, y: 0.7071068, z: 0.00000006322028, w: 0.00000006322028}
+    fromAttach_rotation: {x: -3.5527137e-15, y: 1.0000001, z: 0.00000005960465, w: 0}
+    fromID: 0
+  - name: 'Attach C_3WAY_2[2] to PIPE_1[0]'
+    toAttach: 5
+    toAttachPointIndex: 2
+    toAttach_rotation: {x: 0, y: -1.0000001, z: -0.000000059604645, w: 5.3290705e-15}
     toAttach_color: 0
     toID: 2
     fromAttach: 0
     fromAttachPointIndex: 0
-    fromAttach_rotation: {x: -0.7071068, y: 0.7071068, z: 0.00000006322028, w: 0.00000006322028}
-    fromID: 0
-  - name: 'Attach PIPE_3[0] to C_ELBOW_1[1]'
-    toAttach: 0
-    toAttachPointIndex: 0
-    toAttach_rotation: {x: 0.7071068, y: -0.7071068, z: -0.000000030908616, w: 0.00000003090862}
-    toAttach_color: 3
-    toID: 3
-    fromAttach: 3
-    fromAttachPointIndex: 1
-    fromAttach_rotation: {x: 0.7071068, y: -0.7071068, z: -0.000000030908616, w: 0.00000003090862}
+    fromAttach_rotation: {x: 0, y: -1.0000001, z: -0.000000059604645, w: 5.3290705e-15}
     fromID: 1
-  - name: 'Attach C_ELBOW_5[0] to PIPE_3[1]'
-    toAttach: 3
-    toAttachPointIndex: 0
-    toAttach_rotation: {x: 4.5081757e-17, y: -1, z: -6.838824e-17, w: -0.00000004371139}
-    toAttach_color: 0
-    toID: 5
-    fromAttach: 0
-    fromAttachPointIndex: 1
-    fromAttach_rotation: {x: 4.5081757e-17, y: -1, z: -6.838824e-17, w: -0.00000004371139}
-    fromID: 3
-  - name: 'Attach PIPE_4[0] to C_ELBOW_2[1]'
+  - name: 'Attach PIPE_3[0] to C_3WAY_0[1]'
     toAttach: 0
     toAttachPointIndex: 0
-    toAttach_rotation: {x: 0.7071068, y: 0.7071068, z: -0.000000030908627, w: -0.00000003090862}
-    toAttach_color: 1
-    toID: 4
-    fromAttach: 3
-    fromAttachPointIndex: 1
-    fromAttach_rotation: {x: 0.7071068, y: 0.7071068, z: -0.000000030908627, w: -0.00000003090862}
-    fromID: 2
-  - name: 'Attach C_ELBOW_6[0] to PIPE_4[1]'
-    toAttach: 3
-    toAttachPointIndex: 0
-    toAttach_rotation: {x: -4.661327e-17, y: -1, z: -6.838927e-17, w: -0.000000043711395}
-    toAttach_color: 0
-    toID: 6
-    fromAttach: 0
-    fromAttachPointIndex: 1
-    fromAttach_rotation: {x: -4.661327e-17, y: -1, z: -6.838927e-17, w: -0.000000043711395}
-    fromID: 4
-  - name: 'Attach PIPE_8[0] to C_ELBOW_6[1]'
-    toAttach: 0
-    toAttachPointIndex: 0
-    toAttach_rotation: {x: 1, y: -0.00000004371138, z: -0.00000004371139, w: 8.881784e-15}
+    toAttach_rotation: {x: -0.70710677, y: -0.70710677, z: 0.000000030908623, w: -0.000000030908613}
     toAttach_color: 2
-    toID: 8
-    fromAttach: 3
+    toID: 3
+    fromAttach: 5
     fromAttachPointIndex: 1
-    fromAttach_rotation: {x: 1, y: -0.00000004371138, z: -0.00000004371139, w: 8.881784e-15}
-    fromID: 6
-  - name: 'Attach PIPE_7[0] to C_ELBOW_5[1]'
+    fromAttach_rotation: {x: -0.70710677, y: -0.70710677, z: 0.000000030908623, w: -0.000000030908613}
+    fromID: 0
+  - name: 'Attach PIPE_4[1] to C_3WAY_2[0]'
     toAttach: 0
-    toAttachPointIndex: 0
-    toAttach_rotation: {x: 0.99999994, y: -0.000000043711385, z: -0.000000043711385, w: 1.4988011e-15}
-    toAttach_color: 1
-    toID: 7
-    fromAttach: 3
-    fromAttachPointIndex: 1
-    fromAttach_rotation: {x: 0.99999994, y: -0.000000043711385, z: -0.000000043711385, w: 1.4988011e-15}
-    fromID: 5
-  - name: 'Attach C_ELBOW_11[0] to PIPE_7[1]'
-    toAttach: 3
-    toAttachPointIndex: 0
-    toAttach_rotation: {x: 0.7071068, y: 0.70710677, z: -0.0000000360219, w: -0.000000071557814}
-    toAttach_color: 0
-    toID: 11
-    fromAttach: 0
-    fromAttachPointIndex: 1
-    fromAttach_rotation: {x: 0.7071068, y: 0.70710677, z: -0.0000000360219, w: -0.000000071557814}
-    fromID: 7
-  - name: 'Attach PIPE_12[0] to C_ELBOW_11[1]'
-    toAttach: 0
-    toAttachPointIndex: 0
-    toAttach_rotation: {x: -8.5520766e-16, y: 1.0000001, z: 4.778637e-15, w: -0.0000000842937}
+    toAttachPointIndex: 1
+    toAttach_rotation: {x: -0.70710677, y: -0.70710677, z: 0.000000030908613, w: -0.00000003090862}
     toAttach_color: 4
-    toID: 12
-    fromAttach: 3
+    toID: 4
+    fromAttach: 5
+    fromAttachPointIndex: 0
+    fromAttach_rotation: {x: -0.70710677, y: -0.70710677, z: 0.000000030908613, w: -0.00000003090862}
+    fromID: 2
+  - name: 'Attach PIPE_5[1] to C_3WAY_2[1]'
+    toAttach: 0
+    toAttachPointIndex: 1
+    toAttach_rotation: {x: -0.7071068, y: -0.70710677, z: 0.000000010536709, w: -0.00000001053671}
+    toAttach_color: 2
+    toID: 5
+    fromAttach: 5
     fromAttachPointIndex: 1
-    fromAttach_rotation: {x: -8.5520766e-16, y: 1.0000001, z: 4.778637e-15, w: -0.0000000842937}
-    fromID: 11
-  - name: 'Attach C_ELBOW_9[0] to PIPE_8[1]'
-    toAttach: 3
-    toAttachPointIndex: 0
-    toAttach_rotation: {x: 0.7071069, y: 0.7071069, z: -0.000000038531223, w: -0.0000000036156205}
-    toAttach_color: 0
-    toID: 9
-    fromAttach: 0
-    fromAttachPointIndex: 1
-    fromAttach_rotation: {x: 0.7071069, y: 0.7071069, z: -0.000000038531223, w: -0.0000000036156205}
-    fromID: 8
-  - name: 'Attach PIPE_10[0] to C_ELBOW_9[1]'
+    fromAttach_rotation: {x: -0.7071068, y: -0.70710677, z: 0.000000010536709, w: -0.00000001053671}
+    fromID: 2
+  - name: 'Attach PIPE_6[0] to C_3WAY_0[2]'
     toAttach: 0
     toAttachPointIndex: 0
-    toAttach_rotation: {x: 0.7071068, y: 0.7071068, z: -0.000000012034365, w: -0.00000003310778}
-    toAttach_color: 3
-    toID: 10
-    fromAttach: 3
+    toAttach_rotation: {x: -0.7071068, y: 0.70710677, z: 0.000000022881238, w: 0.000000022881238}
+    toAttach_color: 4
+    toID: 6
+    fromAttach: 5
+    fromAttachPointIndex: 2
+    fromAttach_rotation: {x: -0.7071068, y: 0.70710677, z: 0.000000022881238, w: 0.000000022881238}
+    fromID: 0
+  - name: 'Attach C_3WAY_7[0] to PIPE_6[1]'
+    toAttach: 5
+    toAttachPointIndex: 0
+    toAttach_rotation: {x: -0.70710677, y: -0.7071068, z: 0.000000046558597, w: -0.000000036332068}
+    toAttach_color: 0
+    toID: 7
+    fromAttach: 0
     fromAttachPointIndex: 1
-    fromAttach_rotation: {x: 0.7071068, y: 0.7071068, z: -0.000000012034365, w: -0.00000003310778}
-    fromID: 9
+    fromAttach_rotation: {x: -0.70710677, y: -0.7071068, z: 0.000000046558597, w: -0.000000036332068}
+    fromID: 6
+  - name: 'Attach PIPE_9[0] to C_3WAY_7[1]'
+    toAttach: 0
+    toAttachPointIndex: 0
+    toAttach_rotation: {x: -0.7071068, y: 0.7071068, z: 0.00000003090863, w: 0.00000003090862}
+    toAttach_color: 1
+    toID: 9
+    fromAttach: 5
+    fromAttachPointIndex: 1
+    fromAttach_rotation: {x: -0.7071068, y: 0.7071068, z: 0.00000003090863, w: 0.00000003090862}
+    fromID: 7
+  - name: 'Attach PIPE_8[0] to C_3WAY_7[2]'
+    toAttach: 0
+    toAttachPointIndex: 0
+    toAttach_rotation: {x: -0.7071068, y: 0.7071068, z: 0.00000005960465, w: 0.000000059604645}
+    toAttach_color: 3
+    toID: 8
+    fromAttach: 5
+    fromAttachPointIndex: 2
+    fromAttach_rotation: {x: -0.7071068, y: 0.7071068, z: 0.00000005960465, w: 0.000000059604645}
+    fromID: 7

@@ -12,4 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba9aaabbbf9fc684c9bd8f615e36071e, type: 3}
   m_Name: HCI InstructionSet 2
   m_EditorClassIdentifier: 
-  _mInstructions: []
+  _mInstructions:
+  - name: 'Attach PIPE_1[0] to C_3WAY_0[2]'
+    toAttach: 0
+    toAttachPointIndex: 0
+    toAttach_rotation: {x: 0, y: -1.0000001, z: 0.000000029802326, w: -0.00000002980232}
+    toAttach_color: 1
+    toID: 1
+    fromAttach: 5
+    fromAttachPointIndex: 2
+    fromAttach_rotation: {x: 0, y: -1.0000001, z: 0.000000029802326, w: -0.00000002980232}
+    fromID: 0
+  - name: 'Attach C_3WAY_2[2] to PIPE_1[1]'
+    toAttach: 5
+    toAttachPointIndex: 2
+    toAttach_rotation: {x: 0.000000014901163, y: -1, z: 0.00000004470349, w: -0.00000004470348}
+    toAttach_color: 0
+    toID: 2
+    fromAttach: 0
+    fromAttachPointIndex: 1
+    fromAttach_rotation: {x: 0.000000014901163, y: -1, z: 0.00000004470349, w: -0.00000004470348}
+    fromID: 1
