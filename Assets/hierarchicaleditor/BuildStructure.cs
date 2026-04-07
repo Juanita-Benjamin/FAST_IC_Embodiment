@@ -19,7 +19,7 @@ namespace PlayStructure
 
         private Valve.VR.InteractionSystem.Hand[] _hands = null;
         public Valve.VR.InteractionSystem.Hand[] hands =>
-            _hands ??= FindObjectsOfType<Valve.VR.InteractionSystem.Hand>();
+            _hands ??= FindObjectsByType<Valve.VR.InteractionSystem.Hand>(FindObjectsSortMode.None);
         
         [HideInInspector]
         public ScriptableInstructions instructionSet;
@@ -43,7 +43,7 @@ namespace PlayStructure
             get
             {
                 //remove this and uncomment the null-coalesce if this exhibits issues on startup.
-                _mBuildingPieces ??= FindObjectsOfType<BuildingPiece>().ToList();
+                _mBuildingPieces ??= FindObjectsByType<BuildingPiece>(FindObjectsSortMode.None).ToList();
                 //_mBuildingPieces ??= new List<BuildingPiece>();
                 //quick way to drop disabled and null building pieces
                 _mBuildingPieces = _mBuildingPieces.Where(p=>p!=null && p.enabled).ToList();

@@ -172,7 +172,7 @@ namespace PlayStructure
                 //}
 
                 var style = new GUIStyle();
-                style.normal.textColor = Color.magenta;
+                style.normal.textColor = Color.black; //was magenta
                 Handles.Label(midpoint, $"{i}", style);
                 Handles.color = Color.white;
             }
