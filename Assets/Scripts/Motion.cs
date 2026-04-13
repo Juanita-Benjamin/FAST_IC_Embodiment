@@ -38,15 +38,14 @@ public class Motion : MonoBehaviour
 
         if (startTracking)
         {
-            //handles the creation of the motion tracking for each object
-            var currentScene = SceneManager.GetActiveScene();
+           
             ParticipantID = PID.options[PID.value].text;
            
-            //I changed from Tracking to New_Tracking - 11.26.25
             log_path = $"Tracking/{ParticipantID}_{DateTime.Now.ToString("MMddyy-HHmm")}.csv";
-            if (!Directory.Exists($"New_Tracking/{currentScene.name}"))
+            string directory = log_path;
+            if (!Directory.Exists(directory))
             {
-                Directory.CreateDirectory($"New_Tracking/{currentScene.name}");
+                Directory.CreateDirectory(directory);
             }
             //string headers = "Timestamp, TimeElapsed,"; //placeholder for now
             string headers = "TimeStamp,";
@@ -59,7 +58,7 @@ public class Motion : MonoBehaviour
             }
 
             //this will add the headers to the .csv file
-            writer = new StreamWriter(log_path);
+            writer = new StreamWriter(directory);
             writer.WriteLine(headers);
 
         }
@@ -73,22 +72,17 @@ public class Motion : MonoBehaviour
         if (startTracking)
         {
             //Add Label definition here
-           
-            //var  = PID.GetComponent<TMP_InputField>().text;
-          
-
+    
             timeElapsed += Time.deltaTime;
-            //stringBuilder.Append($"\n{DateTime.Now.ToUniversalTime()}, {timeElapsed:0.0000},");
-            stringBuilder.Append($"\n{timeElapsed:0.0000},"); //Using this for ML format 11.26.25
+            stringBuilder.Append($"\n{timeElapsed:0.0000},"); 
+            
             for (int i = 0; i < MotionObjects.Count; i++)
             {
                 Quaternion quaternion = MotionObjects[i].transform.rotation;
                 float[] sixDegrees = SixDConversions.To6D(quaternion); //convert the Quaternion values to 6DoF
                 stringBuilder.Append($"{MotionObjects[i].transform.position.x:0.0000},{MotionObjects[i].transform.position.y:0.0000},{MotionObjects[i].transform.position.z:0.0000},{MotionObjects[i].transform.rotation.x:0.0000}, {MotionObjects[i].transform.rotation.y:0.0000}, {MotionObjects[i].transform.rotation.z:0.0000},{MotionObjects[i].transform.rotation.w:0.0000},");
                 stringBuilder.Append($"{sixDegrees[0]:0.0000}, {sixDegrees[1]:0.0000},{sixDegrees[2]:0.0000},{sixDegrees[3]:0.0000}, {sixDegrees[4]:0.0000}, {sixDegrees[5]:0.0000},");
-                //Debug.Log(MotionObjects[i].transform.position.x);
-
-                //stringBuilder.Append($"{personality} | {currentScene.name.Substring(0,1)} | {gender.Substring(10, 1)}");
+                
             }
 
         }
