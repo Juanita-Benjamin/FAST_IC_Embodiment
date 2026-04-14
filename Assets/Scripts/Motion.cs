@@ -11,11 +11,9 @@ using XRTLogging;
 public class Motion : MonoBehaviour
 {
     public List<GameObject> MotionObjects;
-    private string ParticipantID;
-    private string Personality;
+    string ParticipantID;
 
-
-    public TMP_Dropdown PID;
+    public TMP_Dropdown PID, Cohort;
 
     private StreamWriter writer;
     private StringBuilder stringBuilder;
@@ -40,25 +38,29 @@ public class Motion : MonoBehaviour
         {
            
             ParticipantID = PID.options[PID.value].text;
+            var Cohorts = Cohort.options[Cohort.value].text;
            
             log_path = $"Tracking/{ParticipantID}_{DateTime.Now.ToString("MMddyy-HHmm")}.csv";
-            string directory = log_path;
+            string directory = $"Tracking/{"Cohort"} {Cohorts}";
             if (!Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory);
             }
+
+            string fileName = $"P_{ParticipantID}_{DateTime.Now.ToString("MMddyy-HHmm")}.csv";
+            string fullPath = Path.Combine(directory, fileName);
+
             //string headers = "Timestamp, TimeElapsed,"; //placeholder for now
             string headers = "TimeStamp,";
             for (int i = 0; i < MotionObjects.Count; i++)
             {
                 string objName = MotionObjects[i].name;
-                string label = "Label";
-                headers += $"{objName}_position_x,{objName}_position_y,{objName}_position_z, {objName}_quat_x,{objName}_quat_y,{objName}_quat_z,{objName}_quat_w,{objName}_six_a,{objName}_six_b,{objName}_six_c,{objName}_six_d, {objName}_Six_e, {objName}_Six_f, {label}";
+                headers += $"{objName}_position_x,{objName}_position_y,{objName}_position_z, {objName}_quat_x,{objName}_quat_y,{objName}_quat_z,{objName}_quat_w,{objName}_six_a,{objName}_six_b,{objName}_six_c,{objName}_six_d, {objName}_Six_e, {objName}_Six_f,";
 
             }
 
             //this will add the headers to the .csv file
-            writer = new StreamWriter(directory);
+            writer = new StreamWriter(fullPath);
             writer.WriteLine(headers);
 
         }
