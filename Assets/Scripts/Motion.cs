@@ -40,14 +40,13 @@ public class Motion : MonoBehaviour
             ParticipantID = PID.options[PID.value].text;
             var Cohorts = Cohort.options[Cohort.value].text;
            
-            log_path = $"Tracking/{ParticipantID}_{DateTime.Now.ToString("MMddyy-HHmm")}.csv";
             string directory = $"Tracking/{"Cohort"} {Cohorts}";
             if (!Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory);
             }
 
-            string fileName = $"P_{ParticipantID}_{DateTime.Now.ToString("MMddyy-HHmm")}.csv";
+            string fileName = $"P_{ParticipantID+1}_{DateTime.Now.ToString("MMddyy-HHmm")}.csv";
             string fullPath = Path.Combine(directory, fileName);
 
             //string headers = "Timestamp, TimeElapsed,"; //placeholder for now
