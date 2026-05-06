@@ -20,20 +20,20 @@ namespace PlayStructure
         private Valve.VR.InteractionSystem.Hand[] _hands = null;
         public Valve.VR.InteractionSystem.Hand[] hands =>
             _hands ??= FindObjectsByType<Valve.VR.InteractionSystem.Hand>(FindObjectsSortMode.None);
-        
+
         [HideInInspector]
         public ScriptableInstructions instructionSet;
         [HideInInspector]
         public List<InstructionStep> buildInstructions;
         //{
-            //get => _mBuildInstructions ??= new List<InstructionStep>();
-            //set => _mBuildInstructions = value;
+        //get => _mBuildInstructions ??= new List<InstructionStep>();
+        //set => _mBuildInstructions = value;
         //}
 
         //private List<InstructionStep> _mBuildInstructions;
-        
+
         public float editorSnapAttachDistance = 0.1f;
-        
+
         //TODO: use this to clean up calls to check for when attachments have changed.
         public bool currentAttachmentsChanged = false;
 
@@ -46,7 +46,7 @@ namespace PlayStructure
                 _mBuildingPieces ??= FindObjectsByType<BuildingPiece>(FindObjectsSortMode.None).ToList();
                 //_mBuildingPieces ??= new List<BuildingPiece>();
                 //quick way to drop disabled and null building pieces
-                _mBuildingPieces = _mBuildingPieces.Where(p=>p!=null && p.enabled).ToList();
+                _mBuildingPieces = _mBuildingPieces.Where(p => p != null && p.enabled).ToList();
                 return _mBuildingPieces;
             }
         }
@@ -72,11 +72,11 @@ namespace PlayStructure
                 buildingPieces[i].buildingPieceID = i;
             }
             */
-                
+
         }
 
         public bool GetClosestAttachPoint(Vector3 position, out AttachPoint attachPoint,
-            AttachPoint.AttachState attachState=AttachPoint.AttachState.FREE,
+            AttachPoint.AttachState attachState = AttachPoint.AttachState.FREE,
             bool pipesOnly = false)
         {
             if (buildingPieces == null || buildingPieces.Count == 0)
@@ -86,12 +86,12 @@ namespace PlayStructure
             }
             var closestAP = buildingPieces
                 .SelectMany(p => p.attachPoints)
-                .Where(a=>a.currentAttachState==attachState)
-                .Where(a=>!pipesOnly || a.owningPiece.isPipe)
+                .Where(a => a.currentAttachState == attachState)
+                .Where(a => !pipesOnly || a.owningPiece.isPipe)
                 //.Select(a=>a.attachTransform)
                 .OrderBy(a => Vector3.Distance(a.attachTransform.position, position))
                 .DefaultIfEmpty().First();
-            if (closestAP!=null && Vector3.Distance(closestAP.attachTransform.position, position) <= editorSnapAttachDistance)
+            if (closestAP != null && Vector3.Distance(closestAP.attachTransform.position, position) <= editorSnapAttachDistance)
             {
                 attachPoint = closestAP;
                 return true;
@@ -100,7 +100,7 @@ namespace PlayStructure
             return false;
         }
 
-        public bool GetClosestAttachPoint(AttachPoint fromAP, out AttachPoint attachPoint) => 
+        public bool GetClosestAttachPoint(AttachPoint fromAP, out AttachPoint attachPoint) =>
             GetClosestAttachPoint(fromAP, out attachPoint, new List<BuildingPiece>());
         public bool GetClosestAttachPoint(AttachPoint fromAP, out AttachPoint attachPoint, BuildingPiece ignorePiece) =>
             GetClosestAttachPoint(fromAP, out attachPoint, new List<BuildingPiece> { ignorePiece });
@@ -118,7 +118,7 @@ namespace PlayStructure
                 .Where(p => !ignorePieces.Contains(p))
                 .Where(p => (lookForConnectors && p.isConnector) || (lookForPipes && p.isPipe))
                 .SelectMany(p => p.attachPoints)
-                .Where(a=>a.isFree)
+                .Where(a => a.isFree)
                 //.Select(a=>a.attachTransform)
                 .OrderBy(a => Vector3.Distance(a.attachTransform.position, fromAP.attachTransform.position))
                 .FirstOrDefault();
@@ -185,8 +185,8 @@ namespace PlayStructure
             var currentRotation = toAttach.owningPiece.transform.rotation;
 
             return toAttach.owningPiece.symmetries
-                .OrderBy(s => 
-                    Quaternion.Angle(currentRotation, s.rotationalOffsetFromCanonical* baseTargetRotation))
+                .OrderBy(s =>
+                    Quaternion.Angle(currentRotation, s.rotationalOffsetFromCanonical * baseTargetRotation))
                 .First();
         }
     }

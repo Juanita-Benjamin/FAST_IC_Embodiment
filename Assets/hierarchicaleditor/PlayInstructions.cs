@@ -31,7 +31,7 @@ public class PlayInstructions : Singleton<PlayInstructions>
         get
         {
             _mBuildingPieces = _mBuildingPieces ??
-                               FindObjectsOfType<BuildingPiece>().ToDictionary(b => b.buildingPieceID);
+                               FindObjectsByType<BuildingPiece>(FindObjectsSortMode.None).ToDictionary(b => b.buildingPieceID);
             return _mBuildingPieces;
         }
     }
@@ -43,7 +43,7 @@ public class PlayInstructions : Singleton<PlayInstructions>
         get
         {
             if (_mScrewPieces != null) return _mScrewPieces;
-            var screws = FindObjectsOfType<ScrewPiece>().OrderBy(s => s.screwIndex).ToList();
+            var screws = FindObjectsByType<ScrewPiece>(FindObjectsSortMode.None).OrderBy(s => s.screwIndex).ToList();
             foreach (var s in screws.Where(s => s.screwIndex == -1))
             {
                 Debug.LogError("index of this screwPiece was -1", s);
