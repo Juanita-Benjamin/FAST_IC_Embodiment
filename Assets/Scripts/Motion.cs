@@ -42,8 +42,14 @@ public class Motion : MonoBehaviour
             var Cohorts = Cohort.options[Cohort.value].text;
            
 <<<<<<< HEAD
+<<<<<<< HEAD
             string directory = $"Tracking/{"Cohort"} {Cohorts}";
             if (!Directory.Exists(directory))
+=======
+            //I changed from Tracking to New_Tracking - 11.26.25
+            log_path = $"Tracking/{ParticipantID}_{DateTime.Now.ToString("MMddyy-HHmm")}.csv";
+            if (!Directory.Exists($"New_Tracking/{currentScene.name}"))
+>>>>>>> parent of dee38e5 (Updated motion script)
 =======
             //I changed from Tracking to New_Tracking - 11.26.25
             log_path = $"Tracking/{ParticipantID}_{DateTime.Now.ToString("MMddyy-HHmm")}.csv";
@@ -67,7 +73,11 @@ public class Motion : MonoBehaviour
 
             //this will add the headers to the .csv file
 <<<<<<< HEAD
+<<<<<<< HEAD
             writer = new StreamWriter(fullPath);
+=======
+            writer = new StreamWriter(log_path);
+>>>>>>> parent of dee38e5 (Updated motion script)
 =======
             writer = new StreamWriter(log_path);
 >>>>>>> parent of dee38e5 (Updated motion script)
